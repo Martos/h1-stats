@@ -47,7 +47,7 @@ end
 LUI.addmenubutton("main_campaign", {
     index = 5,
     text = "@XBOXLIVE_VIEW_PROFILE",
-    description = "Hello World",
+    description = statsEntryDescription[language],
     callback = function() LUI.FlowManager.RequestAddMenu(nil, "stats_menu") end
 })
 
@@ -60,6 +60,8 @@ LUI.MenuBuilder.m_types_build["stats_menu"] = function(a1)
 		showTopRightSmallBar = true
 	})
 
+    menu:addElement(presentBox())
+
     menu:AddBackButton(function(a1)
 		Engine.PlaySound(CoD.SFX.MenuBack)
 		LUI.FlowManager.RequestLeaveMenu(a1)
@@ -67,3 +69,5 @@ LUI.MenuBuilder.m_types_build["stats_menu"] = function(a1)
 
     return menu
 end
+
+LUI.MenuBuilder.registerPopupType( "welcomeDialog", welcome_stats_popup )
